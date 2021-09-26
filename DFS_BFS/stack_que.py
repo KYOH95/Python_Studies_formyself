@@ -1,0 +1,56 @@
+# 9/20/2021
+
+#stack
+
+# append()      & pop()
+
+
+
+#Que
+from collections import deque
+
+# append()      & popleft()
+
+# queue = deque()
+
+# queue.append(1)
+# queue.append(2)
+# queue.append(3)
+# queue.append(4)
+# queue.popleft() #덱 왼쪽 삭제
+# queue.pop()     #덱 오른쪽 삭제
+# print(queue)
+
+
+graph = [
+    [],
+    [2,3,8],
+    [1,7],
+    [1,4,5],
+    [3,5],
+    [3,4],
+    [7],
+    [2,6,8],
+    [1,7]
+]
+
+visited = [False] * 9
+
+def bfs(graph, start, visited):
+    queue = deque([start])
+
+    visited[start] = True
+
+    while queue:
+        v = queue.popleft()
+        print(v, end = ' ')
+
+        for i in graph[v]:
+            if not visited[i]:
+                queue.append(i)
+                visited[i]=True
+
+
+
+
+bfs(graph,2,visited)
