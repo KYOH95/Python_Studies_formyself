@@ -51,6 +51,4 @@ def bfs(graph, start, visited):
                 visited[i]=True
 
 
-
-
 bfs(graph,2,visited)
