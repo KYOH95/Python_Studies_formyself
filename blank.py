@@ -9,3 +9,6 @@ A_list[0] = 1
 A_list[0] = 2
 
 print(A_list[0])
+
+print(-50//6)
+print(50//6)

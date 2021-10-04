@@ -1,4 +1,5 @@
 #완전탐색 난이도:2
+#중복x
 
 #15649번 문제
 
@@ -23,10 +24,6 @@ def rec_fucn(k):
             rec_fucn(k+1)
             selected[k] = 0
             used[cand] = 0
-
-
-
-
 
 
 rec_fucn(0)
