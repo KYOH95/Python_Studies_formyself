@@ -29,3 +29,4 @@ while True:
     else:
         B = B // 2
         count += 1
+
