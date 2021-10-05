@@ -1,14 +1,5 @@
 #practice
 
+A_list = [5,3,2,1]
 
-A_list=[0 for _ in range(5)]
-
-print(A_list)
-
-A_list[0] = 1
-A_list[0] = 2
-
-print(A_list[0])
-
-print(-50//6)
-print(50//6)
+print(sum(A_list))
