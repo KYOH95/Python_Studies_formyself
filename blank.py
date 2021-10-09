@@ -1,10 +1,10 @@
 #practice
+import sys
 
+n = int(sys.stdin.readline())
+a = list(map(int, sys.stdin.readline().split()))
+B = [(x, i) for i, x in enumerate(a)]
+B.sort()
 
-T = 'ABC'
-
-T = T[:-1]
-
-T = T[::-1]
-
-print(T)
+print(a)
+print(B)

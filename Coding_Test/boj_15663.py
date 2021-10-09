@@ -8,30 +8,23 @@ numbers = list(map(int,input().split()))
 numbers.sort()
 
 selected = [0 for _ in range(M)]
-used = [0 for _ in range(N)]
-check_list = []
+used = [0 for _ in range(N+1)]
 
-def check_(x):
-    return x in check_list
+
 
 def rec_func(k):
     if k == M:
-        temp_str = [selected[0]]
-        for i in range(1,len(selected)):
-            temp_str.append(selected[i])
-        
-        if check_(temp_str) == False:
-            for x in temp_str:
-                print(x,end='')
-            print()
-
-        check_list.append(temp_str)
+        for x in selected:
+            print(x,end = " ")
+        print()
         
     else:
+        last_cand = 0
         for cand in range(N):
-            if used[cand]:
+            if used[cand] == 1 or last_cand == numbers[cand]:
                 continue
             else:
+                last_cand = numbers[cand]
                 selected[k] = numbers[cand]
                 used[cand] = 1
                 rec_func(k+1)
