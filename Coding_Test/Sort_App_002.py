@@ -9,12 +9,17 @@
 
 N = int(input())
 A = list(map(int,input().split()))
-B = A.copy()
-B.sort()
+B = [0 for _ in range(N)]
+
+for i in range(N):
+    B[i] = i,A[i]
+
+B.sort(key = lambda x:x[1])
+
 
 P = [0 for _ in range(N)]
 for i in range(N):
-    P[B[i]] = i
+    P[B[i][0]] = i
 
 for x in P:
     print(x,end=" ")
