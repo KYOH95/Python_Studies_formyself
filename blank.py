@@ -3,9 +3,11 @@ import sys
 
 
 
-print('cbb'>'sac')
+list_ = [1,2,3]
 
-ans = []
+x = 2
 
-ans.append('x')
-print(ans)
+if x in list_:
+    print(1)
+else:
+    print(0)
