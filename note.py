@@ -66,6 +66,7 @@ visit = [[False] * N for _ in range(N)]
 #     Queue가 비어있을 때까지 반복한다
 # 큐스텍에 쌓아서 찾아낸다. while문으로
 from collections import deque
+# key words: 최소이동횟수 || 최단 시간
 
 # queue = deque()
 # queue.append(x)

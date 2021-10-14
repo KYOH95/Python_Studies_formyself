@@ -1,16 +1,12 @@
 #practice
+
 import sys
+from collections import deque
+# sys.setrecursionlimit(100000)
 si = sys.stdin.readline
 
-# T = int(si())
-M,N,K = map(int,si().split())
-K_list = [[0]*M for _ in range(N)]
+h,w = map(int,input().split())
+a = [list(si().strip()) for _ in range(h)]
 
-# for _ in range(K):
-#     a,b = map(int,si().split())
-#     K_list[a][b] = 1
-
-for i in range(N):
-    for j in range(M):
-        print(K_list[i][j],end='')
-    print()
+print(a[0][0],a[h-1][w-1])
+print(h,w)
