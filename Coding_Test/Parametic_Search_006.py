@@ -1,27 +1,30 @@
-#boj_2343
-#기타레슨
+#6236
+#용돈관리
+
 import sys
 si = sys.stdin.readline
+
 N,M = map(int,si().split())
-N_list = list(map(int,si().split()))
+N_list = []
 
-L = max(N_list)
-R = 10000000000
-ans = 0
+for _ in range(N):
+    N_list.append(int(si()))
 
-def val_check(D):
+
+def val_check(amount):
     sum = 0
-    count = 1 
+    count = 1
     for x in N_list:
-        if sum + x <= D:
-            sum += x
-        else:
+        if x + sum > amount:
             sum = x
             count += 1
-        # print(D,count,sum)
-    
+        else:
+            sum += x
     return count <= M
 
+L = max(N_list)
+R = 1000000000
+ans = 0
 while L <= R:
     mid = (L+R)//2
     if val_check(mid):
@@ -30,3 +33,4 @@ while L <= R:
     else: L = mid + 1
 
 print(ans)
+

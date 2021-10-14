@@ -41,9 +41,33 @@ Nlog(N) = 10만 * 5 = 50만
 """[3] input"""
 import sys
 si = sys.stdin.readline
-A = int(si())
-B = si()
-print(A,end='')
-print(B)
+# A = int(si())
+# B = si()
+# print(A,end='')
+# print(B)
 
-print(type(A))
+# print(type(A))
+
+#-----------------------------------------------------------------
+
+"""[4} Graphs & BFS|DFS"""
+sys.setrecursionlimit(100000)
+#인접행렬:  O(V^2)
+#인접리스트: O(E)
+
+"""DFS: Queue 없음"""
+#recursive function을 통해서 찾아낸다
+N = int(si())
+a = [si().strip() for _ in range(N)]
+visit = [[False] * N for _ in range(N)]
+
+
+"""BFS: Queue 있음"""
+#     Queue가 비어있을 때까지 반복한다
+# 큐스텍에 쌓아서 찾아낸다. while문으로
+from collections import deque
+
+# queue = deque()
+# queue.append(x)
+# queue.popleft()
+
