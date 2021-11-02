@@ -4,18 +4,26 @@
 #       3 5
 #       ...
 
-N = int(input())
-lecture_list = []
+# import sys
+# si = sys.stdin.readline
 
-for _ in range(N):
-    lecture_list.append(list(map(int,input().split())))
+# N = int(input())
+# a = [int(si())]
 
+# print(a)
 
-lecture_list.sort(reverse=True)
-print(lecture_list)
+import sys
+si = sys.stdin.readline
+n = int(si())
+a = sorted(list(map(int, si().split())))
 
-# count = 1
-# for i in range(1,len(lecture_list)-1):
-#     for j in range(i+1,len(lecture_list)):
+L, R = 0, n - 1
+v1, v2, best_sum = 0, 0, 1 << 31
+while L < R:
+    if best_sum > abs(a[L] + a[R]):
+        best_sum = abs(a[L] + a[R])
+        v1, v2 = a[L], a[R]
+    if a[L] + a[R] > 0: R -= 1
+    else: L += 1
 
-count = 0
+print(v1, v2)
