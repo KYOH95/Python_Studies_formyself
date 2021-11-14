@@ -4,26 +4,39 @@
 #       3 5
 #       ...
 
-# import sys
-# si = sys.stdin.readline
-
-# N = int(input())
-# a = [int(si())]
-
-# print(a)
-
 import sys
 si = sys.stdin.readline
-n = int(si())
-a = sorted(list(map(int, si().split())))
 
-L, R = 0, n - 1
-v1, v2, best_sum = 0, 0, 1 << 31
-while L < R:
-    if best_sum > abs(a[L] + a[R]):
-        best_sum = abs(a[L] + a[R])
-        v1, v2 = a[L], a[R]
-    if a[L] + a[R] > 0: R -= 1
-    else: L += 1
+N = int(input())
+# a = sorted([list(map(int,si().split())) for _ in range(N)])
+a = sorted([[1,4],[3, 5],[0, 6],[5, 7],[3, 8],[5, 9],[6, 10],[8, 11],[8, 12],[2, 13],[12, 14]],key = lambda x:x[0])
 
-print(v1, v2)
+starting = 0
+nextStart = 1000000000000000
+
+for i in range(0,N):
+    if a[i][1] < nextStart:
+        nextStart = a[i][1]
+        starting = i + 1
+        
+
+count = 1
+boolcheck = True
+save = 0
+while boolcheck:
+    for i in range(starting,N):
+        currentEnd = 10000000000000
+        if a[i][0] > nextStart and a[i][1] < currentEnd:
+            currentEnd = a[i][1]
+            save = i
+            # print(a[i][0],a[i][1])
+        nextStart = a[save][1]
+        if starting == save: 
+            boolcheck = False
+            break
+        starting = save + 1
+        count += 1
+
+print(count)
+        
+
