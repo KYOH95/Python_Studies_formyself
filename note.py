@@ -72,3 +72,12 @@ from collections import deque
 # queue.append(x)
 # queue.popleft()
 
+
+#-----------------------------------------------------------------
+"""Two Pointers"""
+
+#1차원 배열에서의 "연속부분수열" | "순서를 지키며 차례대로"
+#곱의 최소
+
+
+
