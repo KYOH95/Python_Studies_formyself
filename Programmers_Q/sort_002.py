@@ -1,4 +1,7 @@
 """
+
+velog : https://velog.io/write?id=aa3e9003-2e90-464b-b2f2-4b8a518ae171
+
 문제 설명
 0 또는 양의 정수가 주어졌을 때, 정수를 이어 붙여 만들 수 있는 가장 큰 수를 알아내 주세요.
 
@@ -17,15 +20,22 @@ numbers	return
 [3, 30, 34, 5, 9]	"9534330"
 
 """
+import functools
 
 def solution(numbers):
-    numbers.sort(key=lambda x:(-x%(10**(int(len(str(x)))))), reverse = False)
+    numbers.sort(key=functools.cmp_to_key(compare), reverse = True)
     answer = ''
- 
     for x in numbers:
         answer += str(x)
     return answer
 
+def compare(a,b):
+    t1 = str(a) + str(b)
+    t2 = str(b) + str(a)
+
+    if int(t1) > int(t2): return 1
+    elif int(t1) < int(t2): return -1
+    else: return 0
 
 # numbers = [6,10,2]
 numbers = [3, 30, 34, 5, 9]

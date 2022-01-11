@@ -1,6 +1,8 @@
 
 
-a= '5'
-b = '1'
+a= str(5)
+b = str(551)
 
-print(3+int(a+b))
+print(a*2)
+print(a*3)
+print(a,b)
