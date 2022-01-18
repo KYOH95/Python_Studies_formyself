@@ -9,8 +9,6 @@ list_ = ["muzi", "frodo", "apeach", "neo"]
 # print(dict["muzi"])
 
 
+a = ["muzi", "frodo"]
 
-a = [3]
-b = [4,0,1,2]
-
-print(len(b))
+print(a[0][:2])
