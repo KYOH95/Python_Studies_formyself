@@ -9,6 +9,6 @@ list_ = ["muzi", "frodo", "apeach", "neo"]
 # print(dict["muzi"])
 
 
-a = ["muzi", "frodo"]
+a = ["abc", "abcc"]
 
-print(a[0][:2])
+print(hash(a[0]),hash(a[1][3:]))
