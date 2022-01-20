@@ -1,5 +1,7 @@
 """
 
+
+link:
 velog : https://velog.io/write?id=aa3e9003-2e90-464b-b2f2-4b8a518ae171
 
 문제 설명
@@ -22,20 +24,23 @@ numbers	return
 """
 import functools
 
+def compare(a,b):
+    if int(str(a)+str(b)) > int(str(b)+str(a)): return 1
+    elif int(str(a)+str(b)) < int(str(b)+str(a)): return -1
+    else: return 0 # a == b
+
 def solution(numbers):
-    numbers.sort(key=functools.cmp_to_key(compare), reverse = True)
     answer = ''
+    numbers.sort(key = functools.cmp_to_key(compare), reverse = True)
+    
+    sum = 0
     for x in numbers:
         answer += str(x)
-    return answer
+        sum += x
+    
+    if sum == 0: return str(0)
+    else: return answer
 
-def compare(a,b):
-    t1 = str(a) + str(b)
-    t2 = str(b) + str(a)
-
-    if int(t1) > int(t2): return 1
-    elif int(t1) < int(t2): return -1
-    else: return 0
 
 # numbers = [6,10,2]
 numbers = [3, 30, 34, 5, 9]
