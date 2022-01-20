@@ -24,7 +24,6 @@ genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
 
 """
 
-
 def solution(genres, plays):
 
     answer = []
@@ -60,8 +59,5 @@ def solution(genres, plays):
             answer.append(temp[1][1])
 
     return answer
-
-
-print(solution(["classic", "pop", "classic", "classic", "pop"],	[500, 600, 500, 400, 2500]))
 
 # print(sorted(dict.items(), key = lambda x: sum(x[1]), reverse = True))
