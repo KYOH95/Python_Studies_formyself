@@ -29,22 +29,12 @@ numbers	return
 list_ = ['1','2','7']
 used = [0,0,0]
 selected = []
+temp = ''
 def rec_func(k):
-    temp = ''
-    if k == len(list_):
-        print("HIT")
-    for cand in range(0,len(list_)):
-        if used[cand]: continue
-        temp = list_[cand]
-        used[cand] = 1
-        if list_[cand] not in selected:
-            selected.append(list_[cand])
-        
-        rec_func(k+1)
-        used[cand] = 0
-        temp = ''
-
-    print(selected)
+    
+            
+    
+    
             
 rec_func(0)
 
