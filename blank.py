@@ -12,3 +12,5 @@ list_ = ["muzi", "frodo", "apeach", "neo"]
 a = ["abc", "abcc"]
 
 print(hash(a[0]),hash(a[1][3:]))
+
+

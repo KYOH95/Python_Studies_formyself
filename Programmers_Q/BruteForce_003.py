@@ -22,7 +22,11 @@ brown	yellow	return
 24	24	[8, 6]
 
 """
-   
+
+def check(yellow, a, b):
+    area = (a-2)*(b-2)
+    if yellow == area: return True
+    else: return False
 
 
 def solution(brown, yellow):
@@ -31,7 +35,8 @@ def solution(brown, yellow):
     a,b = 3 ,3
     while True:
         if a*b == sum: 
-            if sum <= ((a-2)*2 + a + 4): break
+            if check(yellow, a, b):
+                break
             else: a += 1
         elif a*b > sum:
             b += 1
@@ -42,5 +47,13 @@ def solution(brown, yellow):
     answer = [a,b]
     return answer
 
+# 더 나은 코드 * 출처 프로그래머스
+# def solution(brown, yellow):
+#     for i in range(1, int(yellow**(1/2))+1):
+#         if yellow % i == 0:
+#             if 2*(i + yellow//i) == brown-4:
+#                 return [yellow//i+2, i+2]
 
+print(solution(10,2))
+print(solution(8,1))
 print(solution(24,24))
