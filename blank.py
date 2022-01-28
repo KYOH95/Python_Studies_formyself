@@ -1,16 +1,9 @@
 
 
-list_ = ["muzi", "frodo", "apeach", "neo"]
-
-# dict = {"muzi":2,"frodo":1,"apeach":2}
-
-# dict["muzi"] += 4
-
-# print(dict["muzi"])
 
 
-a = ["abc", "abcc"]
-
-print(hash(a[0]),hash(a[1][3:]))
 
 
+print(ord('J')-ord('A'))
+print(ord('I')-ord('A'))
+print(ord('K')-ord('A'))
