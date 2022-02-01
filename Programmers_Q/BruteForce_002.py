@@ -26,17 +26,9 @@ numbers	return
 11과 011은 같은 숫자로 취급합니다.
 """
 
-list_ = ['1','2','7']
-used = [0,0,0]
-selected = []
-temp = ''
-def rec_func(k):
-    
+
             
-    
-    
-            
-rec_func(0)
+
 
 
 # def rec_fucn(k):
