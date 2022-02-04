@@ -25,3 +25,4 @@ def solution(absolutes, signs):
 
     return answer
 
+print(solution([4,7,12],[True,False,True]))
