@@ -1,9 +1,10 @@
 
 
 
+list_ = [-1]
 
+list_b = [1,2,3]
 
+list_ = list_b
+print(list_)
 
-print(ord('J')-ord('A'))
-print(ord('I')-ord('A'))
-print(ord('K')-ord('A'))
