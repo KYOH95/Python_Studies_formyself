@@ -1,6 +1,7 @@
 
 
 dict_menu = {}
+
 def getSetMenu(k,M,order,selected):
     global dict_menu
     if k == M:
@@ -28,13 +29,28 @@ def solution(orders, course):
     for n in course:
         selected = [0 for _ in range(n)]
         for order in orders:
+            order = sorted(order)
             if len(order) >= n:
                 getSetMenu(0,n,order,selected)
 
-    # for n in course:
-    #     for key, value in dict_menu.items():
-    #         if len(key) == n and value = max()
-            
+    max_list = []
+    for n in course:
+        temp_list = []
+        for key, value in dict_menu.items():
+            if len(key) == n:
+                temp_list.append(value)
+            else:
+                temp_list.append(2)
+        max_list.append(max(temp_list))
+    
+    for n in range(0,len(course)):
+        for key, value in dict_menu.items():
+            if len(key) == course[n] and value == max_list[n]:
+                answer.append(key)
+    
+    answer.sort()
     return answer
 
-solution(["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"],	[2,3,4])
+print(solution(["ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"],	[2,3,4]))
+print(solution(["ABCDE", "AB", "CD", "ADE", "XYZ", "XYZ", "ACD"],	[2,3,5]))
+print(solution(["XYZ", "XWY", "WXA"],	[2,3,4]))
