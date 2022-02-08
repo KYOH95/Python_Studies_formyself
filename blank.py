@@ -1,22 +1,23 @@
 
-
-def BF(k,n,selected,info):
-    
-    if k == n:
-        ryan_list = [0 for _ in range(0,11)]
-        for x in selected:
-            ryan_list[x] += 1
-            
-    else:
-        for point in range(0,11):
-            selected[k] = point
-            
-            if selected.count(point) <= info[point]+1:
-                BF(k+1,n,selected,info)
-
-print()
-print("----------------------------------")
-
 n = 5
-selected = [0 for _ in range(n)]
-print(BF(0, n, selected,[2,1,1,1,0,0,0,0,0,0,0]))
+M = 2
+selected = ['' for _ in range(M)]
+# used = [0 for _ in range(0,n+1)]
+order = "ABCDE"
+
+def rec_(k):
+    if k == M:
+        print(selected)
+    else:
+        if k == 0: start = 0
+        # else: start = order.index(selected[k-1])+1
+        for cand in range(start,n):
+            selected[k] = order[cand]
+            rec_(k+1)
+            
+            
+        
+rec_(0)
+
+# order = "ABCDE"
+# print(order[4])
