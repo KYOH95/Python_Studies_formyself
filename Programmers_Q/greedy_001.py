@@ -24,66 +24,69 @@ n	lost	reserve	return
 3	[3]	    [1]	        2
 """
 
-count = 30
-def rec_(k,M,selected,lost,reserve):
-    temp_lost = lost.copy()
-    global count
-    if k == M:
-        for i in range(0,M):
-            #만약 0이면 앞쪽 친구가 체육복이 없는지 확인 후 빌려준다.
-            if selected[i]==0:
-                if reserve[i]-1 in temp_lost:
-                    temp_lost.remove(reserve[i]-1)
+# count = 30
+# def rec_(k,M,selected,lost,reserve):
+#     temp_lost = lost.copy()
+#     global count
+#     if k == M:
+#         for i in range(0,M):
+#             #만약 0이면 앞쪽 친구가 체육복이 없는지 확인 후 빌려준다.
+#             if selected[i]==0:
+#                 if reserve[i]-1 in temp_lost:
+#                     temp_lost.remove(reserve[i]-1)
                     
-            #만약 1이면 뒷쪽 친구가 체육복이 없는지 확인 후 빌려준다.    
-            elif selected[i]==1:
-                if reserve[i]+1 in temp_lost:
-                    temp_lost.remove(reserve[i]+1)
+#             #만약 1이면 뒷쪽 친구가 체육복이 없는지 확인 후 빌려준다.    
+#             elif selected[i]==1:
+#                 if reserve[i]+1 in temp_lost:
+#                     temp_lost.remove(reserve[i]+1)
                     
-        if len(temp_lost) <= count:
-            count = len(temp_lost)
+#         if len(temp_lost) <= count:
+#             count = len(temp_lost)
         
-    else:
-        for cand in range(0,2):
-            selected[k] = cand
-            rec_(k+1,M,selected,lost,reserve)
-            selected[k] = -1
+#     else:
+#         for cand in range(0,2):
+#             selected[k] = cand
+#             rec_(k+1,M,selected,lost,reserve)
+#             selected[k] = -1
 
 
+# def solution(n, lost, reserve):
+#     answer = 0
+#     global count
+
+#     #여벌옷 가져온 학생이 체육복을 잃어버리는 경우
+#     lost_copy = lost.copy()
+#     for i in range(len(lost_copy)):
+#         if lost_copy[i] in reserve:
+#             lost.remove(lost_copy[i])
+#             reserve.remove(lost_copy[i])
+                
+#     print(lost,reserve)
+
+#     M = len(reserve)
+#     selected = [-1 for _ in range(M)]
+
+#     rec_(0,M,selected,lost,reserve)
+#     answer = n - count
+#     return answer
+
+
+# print(solution(5,	[2, 4],	[1, 3, 5]))
+# print(solution(5,	[2, 4],	[3]))
+# print(solution(3,   [3], [1]))
 def solution(n, lost, reserve):
-    answer = 0
-    global count
-
-    #여벌옷 가져온 학생이 체육복을 잃어버리는 경우
-    for x in lost:
+    
+    # 1. lost와 reserve에 같은 수가 있다면 제거
+    lost_copy = lost.copy()
+    for x in lost_copy:
         if x in reserve:
             lost.remove(x)
             reserve.remove(x)
-
-    M = len(reserve)
-    selected = [-1 for _ in range(M)]
-
-    rec_(0,M,selected,lost,reserve)
-    answer = n - count
-    return answer
-
-
-print(solution(5,	[2, 4],	[1, 3, 5]))
-print(solution(5,	[2, 4],	[3]))
-print(solution(3,   [3], [1]))
-
-
-"""
-def solution(n, lost, reserve):
     
-    # lost와 reserve에 같은 수가 있다면 제거
-    for x in lost:
-        if x in reserve:
-            lost.remove(x)
-            reserve.remove(x)
-    
+    # 2
     answer = n - len(lost)
 
+	# 3
     while True:
         temp = answer
         for x in lost:
@@ -97,6 +100,7 @@ def solution(n, lost, reserve):
                 lost.remove(x)
         if answer == temp: break
     
+    # 4
     for x in lost:
         if x-1 in reserve:
             answer += 1
@@ -107,4 +111,7 @@ def solution(n, lost, reserve):
     
     return answer
 
-"""
+
+print(solution(30,
+        [1, 2, 7, 9, 10, 11, 12, 14, 15, 16, 18, 20, 21, 24, 25, 27], # 16개
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 20, 22, 23, 24, 25, 26, 27, 28], )) #25개
