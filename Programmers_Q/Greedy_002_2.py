@@ -18,67 +18,81 @@ number	k	return
 
 """
 
+from collections import deque
 def solution(number, k):
     answer = ''
-    start = 0
-    count = len(number) - k
-    while k > 0:        
-        max = 0
-        temp_start = start
-        end = start+ k+1
-        print(start,end)
-        for i in range(start,end):
-            if int(number[i]) > max:
-                max = int(number[i])
-                start = i + 1
+    #만약 number가 일의 자리이면, 그 수 그대로 return
+    if len(number) == 1:
+        return number
 
-        answer += str(max)
-        # print(temp_start,start)
-        k -= start-1 - temp_start
+    #Q스택을 이용한다.
+    Q = deque(number)
+    #제거해야하는 갯수가 0이되면 while 루프를 나간다.
+    while k>0:
+        #제거될 수 없을 수도 있으니 미리 방지하기
+        temp = k
 
-    count -= len(answer)
-    if count > 0:
-        for i in range(len(number)-count,len(number)):
-            answer += number[i]
+        # 만약 9라면 뒤에 숫자 보지 않고 바로 넘어가주기
+        if Q[0] == '9':
+            answer += str(Q[0])
+            Q.popleft()
+            continue
+        
+        #뒤에 존재하는 숫자가 더 크면 앞에 숫자 제거, k도 늘려주기
+        for i in range(1, k+1):
+            if int(Q[0]) < int(Q[i]):
+                Q.popleft()
+                k -= 1
+                break
+        
+        #제거한 숫자가 없다면 가장 앞에 스택 빼주고 answer에 append
+        if temp == k:
+            answer += str(Q[0])
+            Q.popleft()
+        
+        #만약 answer의 길이가 현재 남아있는 큐스택 - k보다 크다면 즉시 loop에서 break
+        if len(answer) > len(Q) - k:
+            break
+    
+    #스택에 남아있는 문자 answer에 append
+    for x in Q:
+        answer += x
+    
+    #만약 정답의 길이가 number에서 k만큼 제거한 수보다 길때, 잘라주기
+    if len(answer) > len(number) - k:
+        temp = ''
+        for i in range(0,len(number)-k):
+            temp += answer[i]
+        return temp
+
     return answer
 
 
-# solution("1924",2)
-# solution("1231234",3)
+solution("1924",2)
+solution("1231234",3)
 print(solution("4177252841",4))
 
 
 # def solution(number, k):
 #     answer = ''
-    
-#     start_max = int(number[0])
-#     start_index = 0
+#     start = 0
+#     count = len(number) - k
+#     while k > 0:        
+#         max = 0
+#         temp_start = start
+#         end = start+ k+1
+#         print(start,end)
+#         for i in range(start,end):
+#             if int(number[i]) > max:
+#                 max = int(number[i])
+#                 start = i + 1
 
-#     for i in range(0, k+1):
-#         print("i =",i, "max =", start_max)
+#         answer += str(max)
+#         # print(temp_start,start)
+#         k -= start-1 - temp_start
 
-#         if int(number[i]) > start_max:
-#             start_max = int(number[i])
-#             start_index = i
-#             break
-
-#     count = k - start_index
-#     answer += number[start_index]
-#     for i in range(start_index+1, len(number)-1):
-#         if count == 0: 
-#             mid = i
-#             break
-#         if number[i] < number[i+1]:
-#             count -= 1
-#         else:
+#     count -= len(answer)
+#     if count > 0:
+#         for i in range(len(number)-count,len(number)):
 #             answer += number[i]
-
-#     if count == 0:
-#         for i in range(mid,len(number)):
-#             answer += number[i]
-
-
-#     print("hit")
-#     print(start_max,start_index,count)
-#     print(answer)
 #     return answer

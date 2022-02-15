@@ -16,31 +16,42 @@ link: https://programmers.co.kr/learn/courses/30/lessons/42885?language=python3
 
 """
 
+from collections import deque
 def solution(people, limit):
     answer = 0
-    people.sort()
+    Q = deque(sorted(people))
 
-    people_dict = {}
-    
-    for key in people:
-        if key in people_dict:
-            people_dict[key] += 1 
-        else: people_dict[key] = 1 
+    while True:
+        if len(Q) <= 1:
+            if len(Q) == 1:
+                answer += 1
+            break
+        if Q[0] + Q[-1] <= limit:
+            Q.pop()
+            Q.popleft()  
+            answer += 1      
+        else:
+            Q.pop()
+            answer += 1
 
-    # limit이 짝수면
-    if limit%2==0:
-        count = people_dict[limit/2]//2
-        people_dict[limit/2] -= count *2
-        answer += count
-    
-    # 반보다 작은 무게가 반보다 큰 무게와 합이 limit과 일치할때
-    # for key, value in people_dict.items():
-    #     if limit-key in people_dict:
-
-
-
-    print(people_dict)
-    print(answer)
     return answer
 
-solution([70, 50, 80, 50, 50],100)
+
+
+# def solution(people, limit):
+#     answer = 0
+#     people.sort()
+
+#     a = 0
+#     b = len(people)-1
+
+#     while a < b:
+#         if people[a] + people[b] <= limit:
+#             answer +=1
+#             a += 1
+#         b -= 1
+    
+#     return len(people) - answer
+
+
+print(solution([70, 10, 80, 50, 50],100))
