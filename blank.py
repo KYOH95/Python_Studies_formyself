@@ -1,5 +1,9 @@
 
 
-a = 1
+a = 24
 
-print(str(a))
+# print(int(a**0.5))
+
+a = '012'
+
+print(int(a))
