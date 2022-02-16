@@ -1,9 +1,6 @@
 
 
-a = 24
+a = -5
 
-# print(int(a**0.5))
 
-a = '012'
-
-print(int(a))
+print(a % 6)
