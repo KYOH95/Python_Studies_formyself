@@ -1,6 +1,12 @@
 
+import heapq
 
-a = -5
+list = [[0, 5], [2, 3], [1, 2], [9,4], [8,10]]
 
 
-print(a % 6)
+heapq.heapify(list)
+print(list)
+del list[1]
+
+print(list)
+
