@@ -5,55 +5,42 @@ link: https://programmers.co.kr/learn/courses/30/lessons/42627?language=python3
 
 import heapq
 def solution(jobs):
-    heapq.heapify(jobs)
-    sec = 0
+    sec = -1
     answer = 0
-    heap = []
+    heapq.heapify(jobs)
+    inProcess = []
     l = len(jobs)
+    working = False
 
-    p_check = False
-    p_now = 0    
-
-    while True:
-        # print("S:",sec,"p:",p_now)
-        if not jobs and not heap and p_check == False: break
+    while True:        
+        #loop out 
+        if not jobs and not inProcess and not working : break
+        sec += 1
 
         # at some point(sec), push over to heap list from jobs
         while jobs:
             if jobs[0][0] == sec:
-                heapq.heappush(heap,jobs[0])
+                heapq.heappush(inProcess,[jobs[0][1],jobs[0][0]])
                 heapq.heappop(jobs)
             else: break
-            if not jobs: break
-        
-    
-        # ask if it is on the processing or not
-        if p_check == False:
-            p_index = 0
-            if len(heap) > 1:
-                min = heap[0][1] - heap[0][0]
-                for i in range(1,len(heap)):
-                    if heap[i][1] - heap[i][0] < min:
-                        min = heap[i][1] - heap[i][0]
-                        p_index = i
+            # if not jobs: break
+		
+        #check if the machine is working or not
+        if not working: #if not, then start working
+            if not inProcess: continue
+            p_cnt = inProcess[0][0] - 1
+            p_start = inProcess[0][1] -1
+            heapq.heappop(inProcess)
+            working = True
+        else: p_cnt -= 1 #if working, then keep working
             
-            p_now = heap[p_index][1] - heap[p_index][0] - 1
-            temp_sec = heap[p_index][0]
-            del heap[p_index]
-            p_check = True
-            
+        #check if working is done. if yes, +answer then, make 'working' back to False
+        if p_cnt == 0:
+            answer += sec - p_start
+            working = False
 
-        else: #if processing
-            p_now -= 1
-        
-        sec += 1
-        #when processing is done
-        if p_now == 0:
-            # print(sec, sec - temp_sec)
-            answer += sec - temp_sec
-            p_check = False
-    
-    return answer
+    return answer//l
 
+print(solution([[0, 3], [10, 3], [2, 4]]))
+print(solution([[0, 1], [1, 1], [3, 1], [2,6],[50, 7]]))
 
-print(solution([[0, 3], [1, 9], [2, 6]]))
