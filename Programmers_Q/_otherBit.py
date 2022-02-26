@@ -3,26 +3,26 @@
 link: https://programmers.co.kr/learn/courses/30/lessons/77885?language=python3
 """
 	
-def solution(numbers):
+
+def solution(s):
 	answer = []
-	
-	for x in numbers:
-		x_bin = str(bin(x))[2:]
-		num = x+1
-		count = 3
-		while count > 2:
-			num_bin = str(bin(num))[2:]
-			i = 1
-			count = 0
-			while i <= len(num_bin):
-				if i > len(x_bin):
-					if num_bin[-i] == '1': count += 1
-				elif num_bin[-i] != x_bin[-i]: count +=1
-				i+=1
-			num+=1
-			# print(x_bin,num_bin,count)
+	for x in s:
+		x_B = bin(int(x))[2:]
+		next = int(x)+1
+		while True:
+			diff = 0
+			next_B = bin(next)[2:]
+			for i in range(1,len(next_B)+1):
+				if i > len(x_B): 
+					diff += 1
+					continue
+				# print(x_B[-i],"__", next_B[-i])
+				if x_B[-i] != next_B[-i]: diff +=1
+
+			if diff <= 2: break
+			next += 1
 		
-		answer.append(int(num_bin,2))
+		answer.append(next)
 	return answer
 
-print(solution([2,7]))
+print(solution([7]))

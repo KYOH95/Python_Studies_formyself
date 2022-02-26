@@ -2,6 +2,7 @@
 괄호 회전하기
 link: https://programmers.co.kr/learn/courses/30/lessons/76502
 """
+
 def check(s_list):
 	temp = []
 	left = ["(","[","{",]
@@ -16,9 +17,8 @@ def check(s_list):
 				elif temp[-1] == "[" and x=="]": temp.pop()
 				elif temp[-1] == "{" and x=="}": temp.pop()
 				else: temp.append(x)
-			else:
-				return 0
-	if len(temp) == 0: return 1
+			else: return 0
+	if not temp: return 1
 	return 0
 
 from collections import deque
@@ -29,8 +29,8 @@ def solution(s):
 		answer += check(queue)
 		queue.append(queue[0])
 		queue.popleft()
-	
+
 	return answer
 
-
 print(solution("[](){}"))
+print(solution("}]()[{"))
