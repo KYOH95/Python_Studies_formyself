@@ -1,11 +1,15 @@
 
 
+from numpy import VisibleDeprecationWarning
 
-# a = ord('B')-ord('A')
-# b = ord('Z')-ord('Z')+1
 
-# print(a,b)
-# print(min(a,b))
-check_list = 6
-for i in range(check_list-1,0,-1):
-        print(i)
+visited = [True for _ in range(4)]
+# visited = [False, True, False, True]
+
+print(visited)
+
+if not visited: print("111")
+if visited: print("222")
+if visited == False: print("333")
+
+if all(visited): print("444")
