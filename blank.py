@@ -4,7 +4,7 @@ from numpy import VisibleDeprecationWarning
 
 
 visited = [True for _ in range(4)]
-# visited = [False, True, False, True]
+visited = [False, True, False, True]
 
 print(visited)
 
