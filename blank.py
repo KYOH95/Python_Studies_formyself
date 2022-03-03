@@ -1,15 +1,11 @@
 
 
-from numpy import VisibleDeprecationWarning
+a = "aaa"
 
+b = "bbb"
 
-visited = [True for _ in range(4)]
-visited = [False, True, False, True]
+c = "aaa"
 
-print(visited)
-
-if not visited: print("111")
-if visited: print("222")
-if visited == False: print("333")
-
-if all(visited): print("444")
+if a == b: print(a,b)
+if a == c: 
+    print('yes')
