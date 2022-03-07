@@ -1,13 +1,10 @@
 
 
-a = "aaa"
+a = set()
 
-b = "bbb"
+a.add(1)
+a.add(2)
+a.add(3)
 
-c = "aaa"
-
-abc = [c]
-
-abc.append(a)
-abc.append(b)
-print(abc)
+for i in a:
+    print(i)
