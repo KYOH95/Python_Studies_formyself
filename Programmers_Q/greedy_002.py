@@ -87,4 +87,4 @@ def solution(name):
 
 # print(solution("JAAON"))
 # print(solution("JAN"))
-print(solution("AAABBAAAABBAAAAAAA"))
+print(solution("BBAAABABABABABAB"))
