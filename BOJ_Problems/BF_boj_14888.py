@@ -5,32 +5,40 @@ link: https://www.acmicpc.net/problem/14888
 
 import sys
 si = sys.stdin.readline
-
-N = int(si())
+n = int(si())
 numbers = list(map(int,si().split()))
 operators = list(map(int,si().split()))
-op_list = []
+answer = []
 
-for i in range(4):
-	for _ in range(operators[i]):
-		op_list.append(i)
+def calculator(op,val1,val2):
+	if op == 0:
+		return val1 + val2
+	elif op == 1:
+		return val1 - val2
+	elif op == 2:
+		return val1 * val2
+	else:
+		if val1 < 0:
+			return -((-val1//val2))
+		else:
+			return val1//val2
 
-selected = [[] for i in range(N-1)]
-used = [False for i in range(N-1)]
-
-def rec(K,numbers, op_list, used, value):
-	if K == len(op_list):
-		print(selected)
+def rec(k,value):
+	global operators
+	global numbers
+	global answer
+	if k == n-1:
+		answer.append(value)
 	else:
 		for i in range(4):
-			if used[i] == False:
-				selected[K] = [i,numbers[i+1]]
-				used[i] = True
-				rec(K+1,numbers, op_list, used, value)
-				selected[K] = [-1,-1]
-				used[i] = False
+			if operators[i] >= 1:
+				operators[i] -= 1
+				rec(k+1,calculator(i,value,numbers[k+1]))
+				operators[i] += 1
 
-rec(0,numbers,op_list,used,0)
+rec(0,numbers[0])
+print(max(answer))
+print(min(answer))
 
 
 
