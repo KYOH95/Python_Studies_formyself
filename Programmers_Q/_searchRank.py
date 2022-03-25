@@ -3,17 +3,6 @@
 link: https://programmers.co.kr/learn/courses/30/lessons/72412?language=python3
 """
 
-def bs(list_i,l,r,x):
-    result = r+1
-    while l <= r:
-        mid = (l+r)//2
-        if list_i[mid] < x:
-            l = mid+1
-        else: #list_i[mid] >= x:
-            r = mid-1
-            result = mid
-        return result
-
 def check(q,info,i):
     if q[0] != '-':
         if q[0] != info[i][0]: return False
@@ -21,9 +10,21 @@ def check(q,info,i):
         if q[1] != info[i][1]: return False
     if q[2] != '-':
         if q[2] != info[i][2]: return False
-    if q[2] != '-':
+    if q[3] != '-':
         if q[3] != info[i][3]: return False
     return True
+
+def bs(list_i,l,r,x):
+    result = r+1
+    while l <= r:
+        mid = (l+r)//2
+        # print(mid)
+        if list_i[mid] >= x:
+            r = mid-1
+            result = mid
+        else: #list_i[mid] >= x:
+            l = mid+1
+    return result
 
 def solution(info, query):
     answer = []
@@ -33,26 +34,21 @@ def solution(info, query):
 
     for i in range(len(info)):
         info_list[i] = info[i].split()
-        infoScore.append(info[i][4])
+        infoScore.append(int(info_list[i][4]))
     
     for i in range(len(query)):
         query[i] = query[i].replace(" and "," ")
         query_list[i] = query[i].split()
 
-    for i in range(len(info_list)):
-        print(info_list[i])    
-        print(query_list[i])
-    
-    
-    info_list.sort(key = lambda x:x[4])
+    info_list.sort(key = lambda x:int(x[4]))
+    infoScore.sort()
     for q in query_list:
         sum = 0
-        for i in range(bs(infoScore,0,len(infoScore),q[4]),len(info)):
-            if check(q,info,i):
+        for i in range(bs(infoScore,0,len(infoScore)-1,int(q[4])),len(info)):
+            if check(q,info_list,i):
                 sum += 1
         answer.append(sum)
 
-    # print(answer)
     return answer
 
 
