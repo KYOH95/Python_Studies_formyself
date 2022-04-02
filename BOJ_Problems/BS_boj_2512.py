@@ -14,23 +14,25 @@ N = int(si())
 N_list = list(map(int,si().split()))
 max_ = int(si())
 
-def calculator():
-    pass
-
+def calculator(value):
+    sum = 0
+    for x in N_list:
+        if x > value:
+            sum += value
+        else:
+            sum += x
+    return sum <= max_
 
 def solution(L,R):
-    ans = L-1
+    ans = R+1
     while L <= R:
         mid = (L+R)//2
-        if calculator():
-            pass
+        if calculator(mid):
+            L = mid + 1
+            ans = mid
+        else:
+            R = mid -1
+    return ans
 
-
-sum = 0
-for x in N_list:
-    sum += x
-if sum <= max_:
-    print(max(N_list))
-else:
-    solution()
+print(solution(1,max(N_list)))
 
