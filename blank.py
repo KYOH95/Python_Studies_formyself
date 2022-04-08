@@ -1,4 +1,11 @@
+from collections import deque
+Q = []
+q = deque([])
+q.append(1)
+q.append(2)
+q.append(3)
+q.append(4)
 
-l = 4
-r = 5
-print((l+r)//2)
+print(q)
+q.popleft()
+print(q)
