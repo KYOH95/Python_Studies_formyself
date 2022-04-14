@@ -21,7 +21,7 @@ for i in range(M):
     a,b = map(int,si().split())
     list_[a].append(b)
     
-
+print(list_)
 visited = [0 for _ in range(N+1)]
 
 def DFS(start):
