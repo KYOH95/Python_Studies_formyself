@@ -1,11 +1,3 @@
-from collections import deque
-Q = []
-q = deque([])
-q.append(1)
-q.append(2)
-q.append(3)
-q.append(4)
+a = [[3] * 10 for _ in range(10-1)]
 
-print(q)
-q.popleft()
-print(q)
+print(a[0][0])
