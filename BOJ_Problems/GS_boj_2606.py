@@ -16,22 +16,20 @@ for _ in range(N):
     network[y].append(x)
 
 v_check = [False] * (C+1)
-
 def bfs(start):
     Q = deque()
     Q.append(start)
-    v_check[start] = True
+    v_check[start] = 1
     while Q:
         x = Q.popleft()
         for y in network[x]:
-            if v_check[y] == True: continue
-            v_check[y] == True
+            if v_check[y]: continue
+            v_check[y] = True
             Q.append(y)
 
-count = 0
-for x in v_check:
-    if x == True:
-        count += 1
 
 bfs(1)
+count = -1
+for x in v_check:
+    if x: count += 1
 print(count)
