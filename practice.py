@@ -10,3 +10,4 @@ def solution(s):
     return answer
 
 print(solution("-1 -2 -3 -4"))
+
