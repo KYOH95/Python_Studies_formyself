@@ -1,13 +1,17 @@
-def solution(s):
-    answer = ''
-    
-    s = s.split(" ")
-    s = list(map(int, s))
-    answer = str(min(s))
-    answer += " "
-    answer += str(max(s))
-    
-    return answer
+import time
 
-print(solution("-1 -2 -3 -4"))
+#1
+emptylist = [0] * 1000000
+start = time.time() 
+for i in range(len(emptylist)):
+    emptylist.pop()
 
+print("#1 time :", time.time() - start)
+
+#2
+emptylist = [0] * 1000000
+start = time.time() 
+for i in range(len(emptylist)):
+    emptylist.pop(0)
+
+print("#2 time :", time.time() - start)
