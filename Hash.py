@@ -17,3 +17,7 @@ class hash_table:
     def hash_search(self, name):
         key = self.hash_function(name)
         return self.table[key]
+
+hash_table1 = hash_table()
+hash_table1.hash_put('hihi',10)
+print(hash_table1.hash_search('hihi'))
